@@ -17,23 +17,25 @@ jobs:
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/node@master
       env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        SNYK_TOKEN: ${{ secrets.7179e992-85f4-4980-986f-a083bedfc28c
+ }}
       with:
         command: test --json-file-output=snyk_report.json
 
     - name: Start Rapid7 Scan
       run: |
         curl -X POST https://us.api.insight.rapid7.com/ias/v1/scans \
-          -H "X-Api-Key: ${{ secrets.RAPID7_API_KEY }}" \
+          -H "X-Api-Key: ${{ secrets.e9a9d3bd-ba3d-4156-ac26-d37703bb5f9d
+ }}" \
           -H "Content-Type: application/json" \
           -d '{
-                "app": "${{ secrets.RAPID7_APP_ID }}",
-                "scanConfig": "${{ secrets.RAPID7_SCAN_CONFIG_ID }}",
+                "app": "${{ secrets.https://us3.appsec.insight.rapid7.com/op/3E289DB05C362F7F8557/#/apps/cfaca8e4-681c-4ff6-9871-1624a1929313 }}",
+                "scanConfig": "${{ https://us3.appsec.insight.rapid7.com/op/3E289DB05C362F7F8557/#/apps/cfaca8e4-681c-4ff6-9871-1624a1929313/scanConfigs }}",
                 "name": "GitHub CI Scan"
               }'
 
     - name: Send Email Report
-      uses: akhil0333/action-send-mail@v3
+      uses: ci-security.yml/action-send-mail@v3
       with:
         server_address: smtp.gmail.com
         server_port: 587
